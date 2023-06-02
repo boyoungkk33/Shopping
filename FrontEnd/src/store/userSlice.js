@@ -15,6 +15,7 @@ const initialState = {
     error: ''
 }
 
+
 const userSlice = createSlice({
     name: 'user',
     initialState,
