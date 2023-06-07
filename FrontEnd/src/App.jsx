@@ -12,6 +12,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedPage from './pages/ProtectedPage';
 import NotAuthRoutes from './components/NotAuthRoutes';
+import HistoryPage from './pages/HistoryPage';
+import CartPage from './pages/CartPage';
+import DetailProductPage from './pages/DetailProductPage';
+import UploadProductPage from './pages/UploadProductPage';
 function Layout() {
   return (
     <div className='flex flex-col justify-between h-screen'>
@@ -44,21 +48,26 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<Layout />} />
+      <Route path="/" element={<Layout />} />
+  
       {/* 로그인과 상관없이 갈 수 있는 경로 */}
-      <Route path='/landing' element={<LandingPage />} />
-
+      <Route path="/landing" element={<LandingPage />} />
+  
+      {/* 로그인한 사람만 갈 수 있는 경로 */}
+      <Route element={<ProtectedPage isAuth={isAuth} />} />
+      <Route path="/protected" element={<ProtectedPage />} />
+      <Route path="/product/upload" element={<UploadProductPage />} />
+      <Route path="/product/:productId" element={<DetailProductPage />} />
+      <Route path="/user/cart" element={<CartPage />} />
+      <Route path="/history" element={<HistoryPage />} />
+  
       {/* 로그인한 사람은 갈 수 없는 경로 */}
-      <Route element={<ProtectedPage isAuth={isAuth}/>}>
-      <Route path='/protected' element={<ProtectedPage />} />
-      </Route>
-
-      <Route element={<NotAuthRoutes isAuth={isAuth}/>}>
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/register' element={<RegisterPage />} />
+      <Route element={<NotAuthRoutes isAuth={isAuth} />}>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Route>
     </Routes>
-  );
+  );  
 }
 
 export default App;

@@ -10,13 +10,13 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        console.log('연결 완료');
-    })
-    .catch(err => {
-        console.error(err);
-    })
+mongoose.connect(process.env.mongoURI)
+  .then(() => {
+    console.log('연결 완료');
+  })
+  .catch(err => {
+    console.error(err);
+  });
 
 app.get('/', (req, res, next) => {
     setImmediate(() => { next(new Error('it is an error')) });
@@ -29,6 +29,7 @@ app.post('/', (req, res) => {
 })
 
 app.use('/users', require('./routes/users'));
+
 
 app.use((error, req, res, next) => {
     res.status(err.status || 500);
