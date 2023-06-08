@@ -9,6 +9,7 @@ const Navbar = () => {
     setMenu(!menu);
   }
 
+  
   return (
     <section className='relative z-10 text-white bg-gray-900 '>
       <div className='w-full'>
