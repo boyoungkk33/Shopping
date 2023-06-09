@@ -19,12 +19,12 @@ const FileUpload = (onImageChange,images) => {
     }
   }
 
-  const handleDelete = (image) => {
-    const currentIndex =images.indexOF(image);
-    let newImages = [...images]; 
-    newImages.splice(currentIndex,1);
-    onImageChange(newImages);
-    
+   const handleDelete =(image) =>{
+     const currenIndex =images.indexOf(image);
+     let newImages =[...images];
+     newImages.splice(currentIndex,1);
+     onImageChange(newImages);
+   }
   }
   
   
@@ -44,7 +44,7 @@ const FileUpload = (onImageChange,images) => {
 </Dropzone>
     <div className='flex-grow h-[300px] border flex items-center justify-center overflow-x-scroll overflow-y-hidden '>
        {images.map(image=> (
-           <div key={image} onClick={() =>handleDelete(image)}>
+           <div key={image} onClick={(handleDelete) =>handleDelete(image)}>
             <img
             className='min-w-[300px] h-[300px]'
             src={`${import.meta.env.VITE_SERVER_URL}/${image}`}

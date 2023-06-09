@@ -46,7 +46,7 @@ const UploadProductPage = () => {
     
     const body = {
       writer: userData.id,
-      ...product,
+      ...product
     }
 
     try {
