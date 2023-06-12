@@ -1,26 +1,25 @@
-import React from 'react'
-import ImageGallery from 'reat-image-gallery'
-const ProductImage = ({product}) => {
-    const[images, setImages] =useSate([]);
-    
-    useEffect(() =>{
-        if(product?.images?.length>0 ){
-            let images=[];
+import React, { useState, useEffect } from 'react';
+import ImageGallery from 'react-image-gallery';
 
-            product.images.map(imageName =>{
-            return images.push({
-                original: `${import.meta.env.VITE_SERVER_URL}/${imageName}`,
-                thumbnail:`${import.meta.env.VITE_SERVER_URL}/${imageName}`,
-            }) 
-        })
+const ProductImage = ({ product }) => {
+  const [images, setImages] = useState([]);
 
-        setImages(imgaes)
+  useEffect(() => {
+    if (product?.images?.length > 0) {
+      let newImages = [];
+
+      product.images.map((imageName) => {
+        return newImages.push({
+          original: `${import.meta.env.VITE_SERVER_URL}/${imageName}`,
+          thumbnail: `${import.meta.env.VITE_SERVER_URL}/${imageName}`,
+        });
+      });
+
+      setImages(newImages);
     }
+  }, [product]);
 
-},[product])
+  return <ImageGallery items={images} />;
+};
 
-  return (
-    <ImageGallery items={imgaes} />
-  )
-}
-export default ProductImage
+export default ProductImage;
