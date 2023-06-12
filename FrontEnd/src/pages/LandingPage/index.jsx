@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CheckBox from './Sections/CheckBox'
 import RadioBox from './Sections/RadioBox'
 import SearchInput from './Sections/SearchInput'
-import CardItem from '/Sections/CardItem'
+import CardItem from './Sections/CardItem'
 import axiosInstance from '../../utils/axios'
 
 
@@ -11,7 +11,7 @@ const LandingPage = () => {
 
   const limit =4;
   const [searchTerm, setSearchTerm] =useState('');
-  const [products, setProduct] =useState([]);
+  const [products, setProducts] =useState([]);
   const [skip, setSkip] =useState(0);
   const [hasMore , setHasMore] =useState(false);
   const [filters,setFilters] =useState({
@@ -23,7 +23,7 @@ const LandingPage = () => {
 
   },[])
 
-    const fetchProducts =async ({skip,limit,loadMore =false, filters={},searchTem=""}) =>{
+    const fetchProducts =async ({skip,limit,loadMore =false, filters={},searchTerm=""}) =>{
      const params={
       skip,
       limit,
@@ -82,9 +82,9 @@ const LandingPage = () => {
     const showFilteredResults =(filters) =>{
       console.log(filters);
       const body={
-        skip:0,
+        skip: 0,
         limit,
-        filters
+        filters,
         searchTerm
       }
       fetchProducts(body);
@@ -117,14 +117,15 @@ const LandingPage = () => {
         </div>
         <div className='w-1/2'>
           <RadioBox prices={prices} checkedPrice={filters.price}
-           onFilters={filters => handleFilterrs(filters,"price")}
+           onFilters={filters => handleFilters(filters,"price")}
          />
         </div>
       </div>
 
+
       {/*search*/}
       <div className='flex justify-end mb-3'>
-        <SearchInput  searchTerm={searchTem} onSearch={handleSearchTerm}/>
+        <SearchInput  searchTerm={searchTerm} onSearch={handleSearchTerm}/>
       </div>
 
       {/*card*/}

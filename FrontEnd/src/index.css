@@ -1,4 +1,5 @@
-@import "react-image-gallery/stlyes/css/image-gallery.css"
-@tailwind  base;
+@import "react-image-gallery/styles/css/image-gallery.css";
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
