@@ -18,10 +18,11 @@ const LandingPage = () => {
     price: []
   })
 
+// eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
+  fetchProducts({ skip, limit });
+}, [skip, limit]);
 
-  useEffect(() => {
-    fetchProducts({ skip, limit });
-  }, [])
 
 
   const fetchProducts = async ({ skip, limit, loadMore = false, filters = {}, searchTerm = "" }) => {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import NavItem from './Sections/NavItem';
 
 const Navbar = () => {
@@ -9,7 +9,6 @@ const Navbar = () => {
     setMenu(!menu);
   }
 
-  
   return (
     <section className='relative z-10 text-white bg-gray-900 '>
       <div className='w-full'>
