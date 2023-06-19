@@ -7,4 +7,5 @@ const NotAuthRoutes = ({ isAuth }) => {
   )
 }
 
+
 export default NotAuthRoutes
