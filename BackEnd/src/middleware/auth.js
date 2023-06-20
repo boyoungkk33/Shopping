@@ -18,6 +18,7 @@ let auth = async (req, res, next) => {
         if (!user) {
             return res.status(400).send('없는 유저입니다.');
         }
+        
 
         req.user = user;
         next();
